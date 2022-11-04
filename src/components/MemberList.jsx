@@ -1,7 +1,8 @@
-import React from 'react'
-import member_db from '../services/member_db';
-import {useNavigate,Link} from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { fetchMembers } from '../services/members_table';
+import { useNavigate, Link } from 'react-router-dom';
+import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 
 const Sname = styled.div`
     padding: 5px;
@@ -15,30 +16,38 @@ const Sname = styled.div`
     :last-child{
       border-bottom: none;
     }
-`
+`;
 const MemberList = () => {
-    const listClickHandler = (e) => {
-        let target_id = e.target.id;
-        navigate(`/member/${target_id}`)
-    }
-    const navigate = useNavigate();
-    const members = member_db.get_members();
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    fetchMembers().then((members) => {
+      setMembers(members);
+    });
+  }, []);
+
+  const listClickHandler = (e) => {
+    let target_id = e.target.id;
+    navigate(`/member/${target_id}`);
+  };
+  const navigate = useNavigate();
+
   return (
     <>
-        <div><h1>メンバー一覧</h1></div>
+      <div>
+        <h1>メンバー一覧</h1>
+      </div>
 
-        <hr />
-        <Link to="/member_registration">メンバー登録</Link>
-        <hr />
-            { 
-                members.map( (member) => (
-                    <Sname id={member.member_id} key={member.member_id} onClick={listClickHandler}>
-                        {`[${member.name}]`}
-                    </Sname>
-                ))
-            }
+      <hr />
+      <Link to="/member_registration">メンバー登録</Link>
+      <hr />
+      {members.map((member) => (
+        <Sname id={member.id} key={member.id} onClick={listClickHandler}>
+          {`[${member.name}]`}
+        </Sname>
+      ))}
     </>
-  )
-}
+  );
+};
 
-export default MemberList
+export default MemberList;
