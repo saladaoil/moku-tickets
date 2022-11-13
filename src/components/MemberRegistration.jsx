@@ -1,68 +1,70 @@
-import React from 'react'
-import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import member_db from '../services/member_db'
+import React from 'react';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { addMember } from '../services/members_table';
 
 const MemberRegistration = () => {
-    const navigate = useNavigate();
-    
-    const [name, setName] = useState('')
-    const [gender, setGender] = useState('男性')
+  const navigate = useNavigate();
 
-    const handleNameChange = (event) => {
-        setName(event.target.value);
-    }
+  const [name, setName] = useState('');
+  const [gender, setGender] = useState('男性');
 
-    const handleGenderChange = (event) => {
-        setGender(event.target.value)
-    }
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
 
-    const handleSubmit = (event) =>{
-        event.preventDefault(); //デフォルトの動作を抑制する
-        // console.log(`name: ${name} gender${gender}`)
-        
-        const member = {
-          name: name.trim(),
-          tickets: 0
-        };
-        member_db.create_member(member)
-        navigate(`/`)
-    }
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
 
-    //名前が有効かチェックし、有効な場合はtrueを返す。
-    const validateName = () => {
-      return name.trim().length > 0
+  const handleSubmit = (event) => {
+    event.preventDefault(); //デフォルトの動作を抑制する
+    // console.log(`name: ${name} gender${gender}`)
 
-    }
+    addMember({ name, tickets: 0 });
+    navigate(`/`);
+  };
 
-    const genderRadioOption = {
-        man: '男性',
-        woman:'女性'
-    }
+  //名前が有効かチェックし、有効な場合はtrueを返す。
+  const validateName = () => {
+    return name.trim().length > 0;
+  };
+
+  const genderRadioOption = {
+    man: '男性',
+    woman: '女性',
+  };
 
   return (
     <>
-    <div><h1>メンバー登録</h1></div>
+      <div>
+        <h1>メンバー登録</h1>
+      </div>
 
-    <form onSubmit={handleSubmit}>
-    <div>
-      <label>名前:
-        <input type="text" id="name" value={name} onChange={handleNameChange}/>
-      </label>
-    </div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>
+            名前:
+            <input type="text" id="name" value={name} onChange={handleNameChange} />
+          </label>
+        </div>
 
-    <div>
-        性別：
-        {
-            Object.entries(genderRadioOption).map( ([key,value]) => (
-              <label key={key}>
-                <input type="radio" id={key} name="gender" value={value} checked={gender === value} 
-                onChange={handleGenderChange} />
-                {value}
-              </label>
-            ))
-        }
-    </div>
+        <div>
+          性別：
+          {Object.entries(genderRadioOption).map(([key, value]) => (
+            <label key={key}>
+              <input
+                type="radio"
+                id={key}
+                name="gender"
+                value={value}
+                checked={gender === value}
+                onChange={handleGenderChange}
+              />
+              {value}
+            </label>
+          ))}
+        </div>
         {/* <div>
           性別:
           <label>
@@ -80,16 +82,16 @@ const MemberRegistration = () => {
           </label>
         </div> */}
 
-
-    <div>
-      <button type='submit' disabled={!validateName()}>登録</button>
-    </div>
-
-    </form>
-    <Link to="/">メンバー一覧へ</Link>
-    <Link to="/return_tickets">チケットを返却する</Link>
+        <div>
+          <button type="submit" disabled={!validateName()}>
+            登録
+          </button>
+        </div>
+      </form>
+      <Link to="/">メンバー一覧へ</Link>
+      <Link to="/return_tickets">チケットを返却する</Link>
     </>
-  )
-}
+  );
+};
 
-export default MemberRegistration
+export default MemberRegistration;
