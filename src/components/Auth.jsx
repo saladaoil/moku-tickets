@@ -21,7 +21,8 @@ const Auth = () => {
 
   //メールアドレス：trim()して空ではないこと、正しいフォーマット
   function validateEmail(email) {
-    return email.trim().length > 0;
+    const regex = /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/;
+    return regex.test(email.trim());
   }
 
   //パスワード：空ではないこと
