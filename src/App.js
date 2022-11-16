@@ -1,13 +1,15 @@
+import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { supabase } from './services/supabase_api';
+
 import './App.css';
 import MemberList from './components/MemberList';
 import Member from './components/Member';
-import { Routes, Route, Outlet, Navigate, useNavigate } from 'react-router-dom';
 import MemberRegistration from './components/MemberRegistration';
 import NotFound from './components/NotFound';
 import ReturnTickets from './components/ReturnTickets';
 import Auth from './components/Auth';
-import { supabase } from './services/supabase_api';
-import { useState, useEffect } from 'react';
+import UserRegistration from './components/UserRegistration';
 
 const ProtectedRoute = ({ session, redirectPath = `/auth` }) => {
   if (!session) {
@@ -41,6 +43,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/auth" element={<Auth />} />
+        <Route path="/user_registration" element={<UserRegistration />} />
         <Route element={<ProtectedRoute session={session} />}>
           <Route path="/" element={<MemberList />} />
           <Route path="/member/:member_id" element={<Member />} />
