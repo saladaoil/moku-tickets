@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { addMember } from '../services/members_table';
+import Navigation from './Navigation';
 
 const MemberRegistration = () => {
   const navigate = useNavigate();
@@ -37,9 +38,7 @@ const MemberRegistration = () => {
 
   return (
     <>
-      <div>
-        <h1>メンバー登録</h1>
-      </div>
+      <Navigation title="メンバー登録" />
 
       <form onSubmit={handleSubmit}>
         <div>
@@ -89,7 +88,6 @@ const MemberRegistration = () => {
         </div>
       </form>
       <Link to="/">メンバー一覧へ</Link>
-      <Link to="/return_tickets">チケットを返却する</Link>
     </>
   );
 };

@@ -5,6 +5,7 @@ import { dateString, sameDate } from '../utils/date';
 import { fetchMember, updateTickets } from '../services/members_table';
 import { addUsedHistory, fetchUsedHistories } from '../services/used_history_table';
 import { fetchReturnedHistories } from '../services/returned_history_table';
+import Navigation from './Navigation';
 
 const Member = () => {
   const { member_id } = useParams();
@@ -71,9 +72,7 @@ const Member = () => {
 
   return (
     <>
-      <div>
-        <h1>チケット管理</h1>
-      </div>
+      <Navigation title="チケット管理" />
       <div>名前： {member.name}</div>
       <div>回数券残り枚数: {tickets}</div>
 

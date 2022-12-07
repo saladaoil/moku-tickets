@@ -3,6 +3,7 @@ import { fetchMembers } from '../services/members_table';
 import { useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ListItem from './ListItem';
+import Navigation from './Navigation';
 
 const MemberList = () => {
   const [members, setMembers] = useState([]);
@@ -21,9 +22,7 @@ const MemberList = () => {
 
   return (
     <>
-      <div>
-        <h1>メンバー一覧</h1>
-      </div>
+      <Navigation title="メンバー一覧" />
 
       <hr />
       <Link to="/member_registration">メンバー登録</Link>

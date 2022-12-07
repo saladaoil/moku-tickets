@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { supabase } from '../services/supabase_api';
+import Navigation from './Navigation';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -43,9 +44,7 @@ const Auth = () => {
   };
   return (
     <>
-      <div>
-        <h1>ログイン</h1>
-      </div>
+      <Navigation title="ログイン" />
 
       <form onSubmit={handleSubmit}>
         <div>

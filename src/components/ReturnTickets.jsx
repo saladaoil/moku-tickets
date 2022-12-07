@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { updateTickets } from '../services/members_table';
 import { addReturnedHistory } from '../services/returned_history_table';
+import Navigation from './Navigation';
 
 const ReturnTickets = () => {
   // const member = member_db.get_members()
@@ -30,9 +31,7 @@ const ReturnTickets = () => {
 
   return (
     <>
-      <div>
-        <h1>チケットを返却</h1>
-      </div>
+      <Navigation title="チケット返却" />
       <div>名前：{member.name}</div>
       <div>回数券残り枚数：{member.tickets}</div>
       <div>

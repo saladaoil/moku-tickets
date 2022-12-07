@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { supabase } from '../services/supabase_api';
+import Navigation from './Navigation';
 
 const UserRegistration = () => {
   const [email, setEmail] = useState('');
@@ -43,9 +44,7 @@ const UserRegistration = () => {
   };
   return (
     <>
-      <div>
-        <h1>アカウント作成</h1>
-      </div>
+      <Navigation title="アカウント作成" />
 
       <form onSubmit={handleSubmit}>
         <div>
