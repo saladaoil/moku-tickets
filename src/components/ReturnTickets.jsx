@@ -11,7 +11,7 @@ const ReturnTickets = () => {
   const navigate = useNavigate();
 
   const cancel = () => {
-    navigate(`/member/${member.member_id}`);
+    navigate(`/member/${member.id}`);
   };
 
   const reset = () => {
