@@ -11,6 +11,7 @@ import NotFound from './components/NotFound';
 import ReturnTickets from './components/ReturnTickets';
 import Auth from './components/Auth';
 import UserRegistration from './components/UserRegistration';
+import Header from './components/Header';
 
 const ProtectedRoute = ({ session, redirectPath = `/auth` }) => {
   if (!session) {
@@ -45,6 +46,7 @@ function App() {
   return (
     <div className="App">
       <SessionContext.Provider value={session}>
+        <Header />
         <Routes>
           <Route path="/auth" element={<Auth />} />
           <Route path="/user_registration" element={<UserRegistration />} />

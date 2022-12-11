@@ -5,7 +5,10 @@ import { SessionContext } from '../App';
 import { supabase } from '../services/supabase_api';
 
 const SContainer = styled.div`
-    background-color: aqua;
+    background-color: #8452d3;
+    display: flex;
+    justify-content: space-between;
+    padding:0 3%;
 `;
 const handleLogout = async (event) => {
   const { error } = await supabase.auth.signOut();
