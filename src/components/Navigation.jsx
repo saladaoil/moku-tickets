@@ -10,6 +10,7 @@ const SContainer = styled.div`
     background-color: #8452d3;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding:0 3%;
 `;
 const handleLogout = async (event) => {
