@@ -5,6 +5,7 @@ import { SessionContext } from '../App';
 import { supabase } from '../services/supabase_api';
 
 const SContainer = styled.div`
+    color:white;
     background-color: #8452d3;
     display: flex;
     justify-content: space-between;
