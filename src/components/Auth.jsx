@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { supabase } from '../services/supabase_api';
+import Button from './Button';
 import Navigation from './Navigation';
 
 const Auth = () => {
@@ -61,9 +62,9 @@ const Auth = () => {
           </label>
         </div>
         <div>
-          <button type="submit" disabled={!validate()}>
+          <Button type="submit" disabled={!validate()}>
             ログイン
-          </button>
+          </Button>
         </div>
       </form>
     </>

@@ -6,6 +6,7 @@ import { fetchMember, updateTickets } from '../services/members_table';
 import { addUsedHistory, fetchUsedHistories } from '../services/used_history_table';
 import { fetchReturnedHistories } from '../services/returned_history_table';
 import Navigation from './Navigation';
+import Button from './Button';
 
 const Member = () => {
   const { member_id } = useParams();
@@ -77,16 +78,16 @@ const Member = () => {
       <div>回数券残り枚数: {tickets}</div>
 
       {member.tickets === 0 ? (
-        <button onClick={buy} disabled={!enableBuying}>
+        <Button onClick={buy} disabled={!enableBuying}>
           回数券を購入
-        </button>
+        </Button>
       ) : (
-        <button onClick={useTicket} disabled={!enableUse}>
+        <Button onClick={useTicket} disabled={!enableUse}>
           使用する
-        </button>
+        </Button>
       )}
-      {member.tickets > 2 && <button onClick={returnTickets}>チケットを返却する</button>}
-      <div>{enableConfirm && <button onClick={confirmBuying}>確認</button>}</div>
+      {member.tickets > 2 && <Button onClick={returnTickets}>チケットを返却する</Button>}
+      <div>{enableConfirm && <Button onClick={confirmBuying}>確認</Button>}</div>
 
       <div>
         <h2>使用履歴</h2>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useContext } from 'react';
 import { SessionContext } from '../App';
 import { supabase } from '../services/supabase_api';
+import Button from './Button';
 
 const SContainer = styled.div`
     color:white;
@@ -23,7 +24,7 @@ const Navigation = (props) => {
   return (
     <SContainer>
       <div>{props.title}</div>
-      <div>{session && <button onClick={handleLogout}>LOGOUT</button>}</div>
+      <div>{session && <Button onClick={handleLogout}>LOGOUT</Button>}</div>
     </SContainer>
   );
 };
