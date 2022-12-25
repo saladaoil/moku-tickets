@@ -13,7 +13,7 @@ const UserRegistration = () => {
     event.preventDefault(); //デフォルトの動作を抑制する
 
     const { data, error } = await supabase.auth.signUp({
-      email: email,
+      email: email.trim(),
       password: password,
     });
     if (error) {
