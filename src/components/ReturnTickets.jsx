@@ -19,7 +19,7 @@ const ReturnTickets = () => {
     updateTickets({ id: member.id, tickets: 0 });
 
     const today = new Date(Date.now());
-    const refund = (member.tickets - 2) * 200;
+    const refund = (member.tickets - 2) * member.ticket_price;
     addReturnedHistory({
       member_id: member.id,
       return_date: today,
@@ -36,7 +36,8 @@ const ReturnTickets = () => {
       <div>名前：{member.name}</div>
       <div>回数券残り枚数：{member.tickets}</div>
       <div>
-        回数券{member.tickets - 2}回分{member.tickets * 200}円を返却します
+        回数券{member.tickets - 2}回分
+        {member.tickets * member.ticket_price - member.ticket_price * 2}円を返却します
       </div>
       <div>よろしいですか？</div>
       <Button onClick={reset}>返却する</Button>

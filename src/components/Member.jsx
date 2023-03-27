@@ -5,6 +5,7 @@ import { dateString, sameDate } from '../utils/date';
 import { fetchMember, updateTickets, updateTicketsAndPrice } from '../services/members_table';
 import { addUsedHistory, fetchUsedHistories } from '../services/used_history_table';
 import { fetchReturnedHistories } from '../services/returned_history_table';
+import Confirm from './Confirm';
 import Navigation from './Navigation';
 import Button from './Button';
 
@@ -24,7 +25,16 @@ const Member = () => {
   const [ticketPrice, setTicketPrice] = useState('200円回数券');
   const onPriceChange = (e) => setTicketPrice(e.target.value);
 
-  const TICKET_RADIO = ['200円回数券', '100円回数券'];
+  const TICKET_RADIO = [
+    {
+      itemName: '200円回数券',
+      value: 200,
+    },
+    {
+      itemName: '100円回数券',
+      value: 100,
+    },
+  ];
 
   useEffect(() => {
     fetchMember(member_id).then((member) => {
@@ -46,7 +56,6 @@ const Member = () => {
   }, []);
 
   const buy = () => {
-    setTickets((prev) => prev + 12);
     setEnableBuying(false);
     setEnableConfirm(true);
   };
@@ -63,6 +72,8 @@ const Member = () => {
         throw new Error('ticketPriceの値が不明');
     }
 
+    setTickets((prev) => prev + 12);
+    const tickets = 12;
     const newMember = { ...member, tickets, ticket_price };
     updateTicketsAndPrice({ id: member.id, tickets, ticket_price });
     setMember(newMember);
@@ -92,30 +103,37 @@ const Member = () => {
   return (
     <>
       <Navigation title="チケット管理" />
+
+      <Confirm
+        open={enableConfirm}
+        setOpenState={setEnableConfirm}
+        execute={confirmBuying}
+        title="回数券購入"
+      >
+        回数券を購入しますか？
+      </Confirm>
       <div>名前： {member.name}</div>
       <div>回数券残り枚数: {tickets}</div>
 
       {member.tickets === 0 ? (
         <>
           <div>
-            {TICKET_RADIO.map((value) => {
+            {TICKET_RADIO.map((item) => {
               return (
-                <label key={value}>
+                <label key={item.value}>
                   <input
                     type="radio"
-                    value={value}
-                    checked={ticketPrice === value}
+                    value={item.itemName}
+                    checked={ticketPrice === item.itemName}
                     onChange={onPriceChange}
                   />
-                  {value}
+                  {item.itemName}
                 </label>
               );
             })}
           </div>
           <div>
-            <Button onClick={buy} disabled={!enableBuying}>
-              回数券を購入
-            </Button>
+            <Button onClick={buy}>回数券を購入</Button>
           </div>
         </>
       ) : (
