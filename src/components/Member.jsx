@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { dateString, sameDate } from '../utils/date';
-import { fetchMember, updateTickets } from '../services/members_table';
+import { fetchMember, updateTickets, updateTicketsAndPrice } from '../services/members_table';
 import { addUsedHistory, fetchUsedHistories } from '../services/used_history_table';
 import { fetchReturnedHistories } from '../services/returned_history_table';
 import Navigation from './Navigation';
@@ -21,6 +21,11 @@ const Member = () => {
 
   const navigate = useNavigate();
 
+  const [ticketPrice, setTicketPrice] = useState('200円回数券');
+  const onPriceChange = (e) => setTicketPrice(e.target.value);
+
+  const TICKET_RADIO = ['200円回数券', '100円回数券'];
+
   useEffect(() => {
     fetchMember(member_id).then((member) => {
       setMember(member);
@@ -37,6 +42,7 @@ const Member = () => {
     fetchReturnedHistories(member_id).then((returnHistories) => {
       setReturnHistories(returnHistories);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const buy = () => {
@@ -45,8 +51,20 @@ const Member = () => {
     setEnableConfirm(true);
   };
   const confirmBuying = () => {
-    const newMember = { ...member, tickets };
-    updateTickets({ id: member.id, tickets });
+    let ticket_price;
+    switch (ticketPrice) {
+      case '200円回数券':
+        ticket_price = 200;
+        break;
+      case '100円回数券':
+        ticket_price = 100;
+        break;
+      default:
+        throw new Error('ticketPriceの値が不明');
+    }
+
+    const newMember = { ...member, tickets, ticket_price };
+    updateTicketsAndPrice({ id: member.id, tickets, ticket_price });
     setMember(newMember);
     setEnableConfirm(false);
   };
@@ -78,9 +96,28 @@ const Member = () => {
       <div>回数券残り枚数: {tickets}</div>
 
       {member.tickets === 0 ? (
-        <Button onClick={buy} disabled={!enableBuying}>
-          回数券を購入
-        </Button>
+        <>
+          <div>
+            {TICKET_RADIO.map((value) => {
+              return (
+                <label key={value}>
+                  <input
+                    type="radio"
+                    value={value}
+                    checked={ticketPrice === value}
+                    onChange={onPriceChange}
+                  />
+                  {value}
+                </label>
+              );
+            })}
+          </div>
+          <div>
+            <Button onClick={buy} disabled={!enableBuying}>
+              回数券を購入
+            </Button>
+          </div>
+        </>
       ) : (
         <Button onClick={useTicket} disabled={!enableUse}>
           使用する

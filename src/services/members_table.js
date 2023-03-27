@@ -51,3 +51,18 @@ export const updateTickets = async ({ id, tickets }) => {
     return status;
   }
 };
+
+export const updateTicketsAndPrice = async ({ id, tickets, ticket_price }) => {
+  let { status, statusText, error } = await supabase
+    .from('members')
+    .update({ tickets, ticket_price })
+    .eq('id', id)
+    .single();
+  if (error) {
+    console.log('error', error);
+    return null;
+  } else {
+    console.log(`status:${status} statusText:${statusText}`);
+    return status;
+  }
+};
