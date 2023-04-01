@@ -86,22 +86,6 @@ const MemberRegistration = () => {
             </SRadioLabel>
           ))}
         </div>
-        {/* <div>
-          性別:
-          <label>
-            <input type="radio" key="man" id="man" name="gender" value="男性"
-              onChange={handleGenderChange} checked={gender === '男性'}
-            />
-            男性
-          </label>
-
-          <label>
-            <input type="radio" key="women" id="women" name="gender" value="女性"
-              onChange={handleGenderChange} checked={gender === '女性'}
-            />
-            女性
-          </label>
-        </div> */}
 
         <div>
           <Button type="submit" disabled={!validateName()}>
