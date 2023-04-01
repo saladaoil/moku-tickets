@@ -11,11 +11,15 @@ const UserRegistration = () => {
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (event) => {
+    setMessage('アカウント作成の処理中です');
     event.preventDefault(); // デフォルトの動作を抑制する
     let { data, error } = await supabase.auth.signUp({
       email: email.trim(),
       password,
     });
+    setMessage(
+      '「木曜会アプリの管理者ユーザー登録確認」という件名のメールを送信しましたのでリンクをクリックしてください'
+    );
     if (error) {
       console.log(error.message);
       setMessage('アカウントを作成できません');
