@@ -2,14 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SListItem = styled.div`
-    padding: 5px;
+    padding: 10px;
     margin-left: 20px;
     margin-right: 20px;
     list-style-type: none;
-    background-color: #ae89e9;
-    border-bottom: 1px gray dotted;
+    background-color: #9d4edd;
+    border-bottom: 2px white solid;
     font-weight: bold;
-    color: #000000;
+    color: #ffffff;
     cursor: pointer;
 
     :last-child{

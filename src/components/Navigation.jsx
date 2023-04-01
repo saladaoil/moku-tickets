@@ -7,11 +7,12 @@ import Button from './Button';
 
 const SContainer = styled.div`
     color:white;
-    background-color: #8452d3;
+    background-color: #7b2cbf;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding:0 3%;
+    font-weight: bold;
 `;
 const handleLogout = async (event) => {
   const { error } = await supabase.auth.signOut();

@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SButton = styled.button`
-    background-color: #ddbcec;
+    background-color: #e0aaff;
     margin: 0.5em;
-    padding: 0.25em;
+    padding: 0.25em 1em;
     margin: 0.25em;
-    font-size: 1.25em;
+    font-size: 0.8em;
     font-weight: bold;
+    color: #3c096c;
 `;
 
 const Button = (props) => {

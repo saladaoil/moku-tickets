@@ -12,7 +12,7 @@ const SContainer = styled.div`
     align-items: center;
     background-color: white;
     padding: 2px 10px;
-    color: #8452d3;
+    color: #9d4edd;
     font-weight: bold;
 `;
 
