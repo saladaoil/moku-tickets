@@ -26,7 +26,7 @@ const ReturnTickets = () => {
 
     const today = new Date(Date.now());
     const refund = (member.tickets - 2) * member.ticket_price;
-    addReturnedHistory({
+    await addReturnedHistory({
       member_id: member.id,
       return_date: today,
       tickets: member.tickets,
