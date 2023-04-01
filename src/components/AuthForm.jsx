@@ -31,13 +31,15 @@ const AuthForm = ({ onSubmit, submitName, authState }) => {
     <form onSubmit={onSubmit}>
       <div>
         <label>
-          メールアドレス:
+          メールアドレス
+          <br />
           <input type="email" id="email" value={email} onChange={handleEmailChange} />
         </label>
       </div>
       <div>
         <label>
-          パスワード:
+          パスワード
+          <br />
           <input type="password" id="password" value={password} onChange={handlePasswordChange} />
         </label>
       </div>
