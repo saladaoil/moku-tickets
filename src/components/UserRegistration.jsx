@@ -21,7 +21,6 @@ const UserRegistration = () => {
       email: email.trim(),
       password,
     });
-    navigate(`${homeUrl}/auth`);
 
     if (error) {
       console.log(error.message);
