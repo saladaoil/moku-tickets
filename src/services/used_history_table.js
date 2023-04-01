@@ -5,7 +5,8 @@ export const fetchUsedHistories = async (member_id) => {
     .from('used_history')
     .select('*')
     .order('used_date', { ascending: false })
-    .eq('member_id', member_id);
+    .eq('member_id', member_id)
+    .limit(12);
   if (error) {
     console.log('error', error);
     return null;

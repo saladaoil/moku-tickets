@@ -5,7 +5,8 @@ export const fetchReturnedHistories = async (member_id) => {
     .from('returned_history')
     .select('*')
     .order('return_date', { ascending: false })
-    .eq('member_id', member_id);
+    .eq('member_id', member_id)
+    .limit(2);
   if (error) {
     console.log('error', error);
     return null;
