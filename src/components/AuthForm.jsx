@@ -1,5 +1,10 @@
 import React from 'react';
 import Button from './Button';
+import styled from 'styled-components';
+
+const SInput = styled.input`
+  width: min(90%, 12em);
+`;
 
 const AuthForm = ({ onSubmit, submitName, authState }) => {
   const { email, setEmail, password, setPassword } = authState;
@@ -33,14 +38,14 @@ const AuthForm = ({ onSubmit, submitName, authState }) => {
         <label>
           メールアドレス
           <br />
-          <input type="email" id="email" value={email} onChange={handleEmailChange} />
+          <SInput type="email" id="email" value={email} onChange={handleEmailChange} />
         </label>
       </div>
       <div>
         <label>
           パスワード
           <br />
-          <input type="password" id="password" value={password} onChange={handlePasswordChange} />
+          <SInput type="password" id="password" value={password} onChange={handlePasswordChange} />
         </label>
       </div>
 

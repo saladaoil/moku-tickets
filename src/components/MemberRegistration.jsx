@@ -4,6 +4,20 @@ import { useNavigate, Link } from 'react-router-dom';
 import { addMember } from '../services/members_table';
 import Button from './Button';
 import Navigation from './Navigation';
+import styled from 'styled-components';
+
+const SInput = styled.input`
+  width: min-content(90%, 12em);
+  margin-bottom: 1em;
+`;
+
+const SRadioLabel = styled.label`
+  margin: 0 0.5em;
+`;
+
+const SLink = styled.div`
+  font-weight: bold;
+`;
 
 const MemberRegistration = () => {
   const navigate = useNavigate();
@@ -40,19 +54,26 @@ const MemberRegistration = () => {
   return (
     <>
       <Navigation title="メンバー登録" />
+      <hr />
+      <SLink>
+        <Link to="/">一覧へ戻る</Link>
+      </SLink>
+      <hr />
 
       <form onSubmit={handleSubmit}>
         <div>
           <label>
-            名前:
-            <input type="text" id="name" value={name} onChange={handleNameChange} />
+            名前
+            <br />
+            <SInput type="text" id="name" value={name} onChange={handleNameChange} />
           </label>
         </div>
 
         <div>
-          性別：
+          性別
+          <br />
           {Object.entries(genderRadioOption).map(([key, value]) => (
-            <label key={key}>
+            <SRadioLabel key={key}>
               <input
                 type="radio"
                 id={key}
@@ -62,7 +83,7 @@ const MemberRegistration = () => {
                 onChange={handleGenderChange}
               />
               {value}
-            </label>
+            </SRadioLabel>
           ))}
         </div>
         {/* <div>
@@ -88,7 +109,6 @@ const MemberRegistration = () => {
           </Button>
         </div>
       </form>
-      <Link to="/">メンバー一覧へ</Link>
     </>
   );
 };
