@@ -5,10 +5,15 @@ import { SessionContext } from '../App';
 import icon from '../images/icon.png';
 
 const SContainer = styled.div`
-    background-color: #ffffff;
+    height: 42px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    padding:0 5%;
+    align-items: center;
+    background-color: white;
+    padding: 2px 10px;
+    color: #8452d3;
+    font-weight: bold;
 `;
 
 const Header = () => {
