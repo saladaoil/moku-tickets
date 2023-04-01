@@ -4,6 +4,11 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ListItem from './ListItem';
 import Navigation from './Navigation';
+import styled from 'styled-components';
+
+const SLink = styled.div`
+  font-weight: bold;
+`;
 
 const MemberList = () => {
   const [members, setMembers] = useState([]);
@@ -25,11 +30,13 @@ const MemberList = () => {
       <Navigation title="メンバー一覧" />
 
       <hr />
-      <Link to="/member_registration">メンバー登録</Link>
+      <SLink>
+        <Link to="/member_registration">メンバー登録</Link>
+      </SLink>
       <hr />
       {members.map((member) => (
         <ListItem id={member.id} key={member.id} onClick={listClickHandler}>
-          {`[${member.name}]`}
+          {`${member.name}`}
         </ListItem>
       ))}
     </>

@@ -5,9 +5,21 @@ import { dateString, sameDate } from '../utils/date';
 import { fetchMember, updateTickets, updateTicketsAndPrice } from '../services/members_table';
 import { addUsedHistory, fetchUsedHistories } from '../services/used_history_table';
 import { fetchReturnedHistories } from '../services/returned_history_table';
+
 import Confirm from './Confirm';
 import Navigation from './Navigation';
 import Button from './Button';
+import styled from 'styled-components';
+
+const STicketInfo = styled.div`
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 30px 0
+`;
+
+const SLink = styled.div`
+  font-weight: bold;
+`;
 
 const Member = () => {
   const { member_id } = useParams();
@@ -112,8 +124,17 @@ const Member = () => {
       >
         回数券を購入しますか？
       </Confirm>
-      <div>名前： {member.name}</div>
-      <div>回数券残り枚数: {tickets}</div>
+
+      <hr />
+      <SLink>
+        <Link to="/">一覧へ戻る</Link>
+      </SLink>
+      <hr />
+
+      <STicketInfo>
+        <div>名前： {member.name}</div>
+        <div>回数券残り枚数: {tickets}</div>
+      </STicketInfo>
 
       {member.tickets === 0 ? (
         <>
@@ -145,22 +166,18 @@ const Member = () => {
       <div>{enableConfirm && <Button onClick={confirmBuying}>確認</Button>}</div>
 
       <div>
-        <h2>使用履歴</h2>
+        <h3>使用履歴</h3>
       </div>
 
       {usedHistories.map((usedHistory) => (
         <div key={usedHistory.used_date}>{dateString(usedHistory.used_date)}</div>
       ))}
       <div>
-        <h2>返却履歴</h2>
+        <h3>返却履歴</h3>
       </div>
       {returnHistories.map((returnHistory) => (
         <div key={returnHistory.id}>{dateString(returnHistory.return_date)}</div>
       ))}
-
-      <div>
-        <Link to="/">メンバー一覧</Link>
-      </div>
     </>
   );
 };
