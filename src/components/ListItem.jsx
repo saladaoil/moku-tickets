@@ -6,8 +6,10 @@ const SListItem = styled.div`
     margin-left: 20px;
     margin-right: 20px;
     list-style-type: none;
-    background-color: aqua;
+    background-color: #ae89e9;
     border-bottom: 1px gray dotted;
+    font-weight: bold;
+    color: #000000;
     cursor: pointer;
 
     :last-child{
