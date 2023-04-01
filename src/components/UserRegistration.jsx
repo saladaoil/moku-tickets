@@ -5,8 +5,6 @@ import Navigation from './Navigation';
 import ColorMessage from './ColorMessage';
 import AuthForm from './AuthForm';
 
-const homeUrl = process.env.PUBLIC_URL;
-
 const UserRegistration = () => {
   const navigate = useNavigate();
 

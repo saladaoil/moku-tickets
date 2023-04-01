@@ -6,8 +6,6 @@ import Button from './Button';
 import Navigation from './Navigation';
 import styled from 'styled-components';
 
-const homeUrl = process.env.PUBLIC_URL;
-
 const SLink = styled.div`
   font-weight: bold;
 `;
@@ -18,7 +16,7 @@ const ReturnTickets = () => {
   const navigate = useNavigate();
 
   const cancel = () => {
-    navigate(`${homeUrl}/member/${member.id}`);
+    navigate(`/member/${member.id}`);
   };
 
   const reset = async () => {
@@ -33,7 +31,7 @@ const ReturnTickets = () => {
       refund,
     });
 
-    navigate(`${homeUrl}/member/${member.id}`);
+    navigate(`/member/${member.id}`);
   };
 
   return (
@@ -41,7 +39,7 @@ const ReturnTickets = () => {
       <Navigation title="チケット返却" />
       <hr />
       <SLink>
-        <Link to={`${homeUrl}`}>一覧へ戻る</Link>
+        <Link to={`/`}>一覧へ戻る</Link>
       </SLink>
       <hr />
       <div>名前：{member.name}</div>
