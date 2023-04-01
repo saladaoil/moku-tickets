@@ -19,6 +19,9 @@ const UserRegistration = () => {
       email: email.trim(),
       password,
     });
+    setMessage(
+      '「木曜会アプリの管理者ユーザー登録確認」という件名のメールを送信したのでリンクをクリックしてください'
+    );
 
     if (error) {
       console.log(error.message);
