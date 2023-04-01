@@ -40,8 +40,8 @@ const Confirm = ({ open, setOpenState, execute, title, children }) => {
         <SContent>
           <STitle>{title}</STitle>
           <div>{children}</div>
-          <Button onClick={execute}>OK</Button>
-          <Button onClick={close}>CANCEL</Button>
+          <Button onClick={execute}>はい</Button>
+          <Button onClick={close}>キャンセル</Button>
         </SContent>
       </SOverlay>
     );

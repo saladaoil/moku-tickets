@@ -47,10 +47,10 @@ const MemberRegistration = () => {
     return name.trim().length > 0;
   };
 
-  const genderRadioOption = {
-    man: '男性',
-    woman: '女性',
-  };
+  // const genderRadioOption = {
+  //   man: '男性',
+  //   woman: '女性',
+  // };
 
   return (
     <>
@@ -70,7 +70,7 @@ const MemberRegistration = () => {
           </label>
         </div>
 
-        <div>
+        {/* <div>
           性別
           <br />
           {Object.entries(genderRadioOption).map(([key, value]) => (
@@ -86,7 +86,7 @@ const MemberRegistration = () => {
               {value}
             </SRadioLabel>
           ))}
-        </div>
+        </div> */}
 
         <div>
           <Button type="submit" disabled={!validateName()}>
