@@ -5,6 +5,9 @@ const SButton = styled.button`
     background-color: #ddbcec;
     margin: 0.5em;
     padding: 0.25em;
+    margin: 0.25em;
+    font-size: 1.25em;
+    font-weight: bold;
 `;
 
 const Button = (props) => {
