@@ -11,6 +11,8 @@ import Navigation from './Navigation';
 import Button from './Button';
 import styled from 'styled-components';
 
+const homeUrl = process.env.PUBLIC_URL;
+
 const STicketInfo = styled.div`
   font-size: 1.5em;
   font-weight: bold;
@@ -93,7 +95,7 @@ const Member = () => {
   };
 
   const returnTickets = () => {
-    navigate(`/return_tickets/`, { state: { ...member } });
+    navigate(`${homeUrl}/return_tickets/`, { state: { ...member } });
   };
 
   const useTicket = () => {
@@ -127,7 +129,7 @@ const Member = () => {
 
       <hr />
       <SLink>
-        <Link to="/">一覧へ戻る</Link>
+        <Link to={`${homeUrl}`}>一覧へ戻る</Link>
       </SLink>
       <hr />
 

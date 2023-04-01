@@ -4,6 +4,13 @@ import { updateTickets } from '../services/members_table';
 import { addReturnedHistory } from '../services/returned_history_table';
 import Button from './Button';
 import Navigation from './Navigation';
+import styled from 'styled-components';
+
+const homeUrl = process.env.PUBLIC_URL;
+
+const SLink = styled.div`
+  font-weight: bold;
+`;
 
 const ReturnTickets = () => {
   // const member = member_db.get_members()
@@ -12,7 +19,7 @@ const ReturnTickets = () => {
   const navigate = useNavigate();
 
   const cancel = () => {
-    navigate(`/member/${member.id}`);
+    navigate(`${homeUrl}/member/${member.id}`);
   };
 
   const reset = () => {
@@ -27,12 +34,17 @@ const ReturnTickets = () => {
       refund,
     });
 
-    navigate(`/member/${member.id}`);
+    navigate(`${homeUrl}/member/${member.id}`);
   };
 
   return (
     <>
       <Navigation title="チケット返却" />
+      <hr />
+      <SLink>
+        <Link to={`${homeUrl}`}>一覧へ戻る</Link>
+      </SLink>
+      <hr />
       <div>名前：{member.name}</div>
       <div>回数券残り枚数：{member.tickets}</div>
       <div>
@@ -42,9 +54,6 @@ const ReturnTickets = () => {
       <div>よろしいですか？</div>
       <Button onClick={reset}>返却する</Button>
       <Button onClick={cancel}>キャンセル</Button>
-      <div>
-        <Link to="/">メンバー一覧へ</Link>
-      </div>
     </>
   );
 };

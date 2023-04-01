@@ -6,6 +6,8 @@ import ListItem from './ListItem';
 import Navigation from './Navigation';
 import styled from 'styled-components';
 
+const homeUrl = process.env.PUBLIC_URL;
+
 const SLink = styled.div`
   font-weight: bold;
 `;
@@ -21,7 +23,7 @@ const MemberList = () => {
 
   const listClickHandler = (e) => {
     let target_id = e.target.id;
-    navigate(`/member/${target_id}`);
+    navigate(`${homeUrl}/member/${target_id}`);
   };
   const navigate = useNavigate();
 
@@ -31,7 +33,7 @@ const MemberList = () => {
 
       <hr />
       <SLink>
-        <Link to="/member_registration">メンバー登録</Link>
+        <Link to={`${homeUrl}/member_registration`}>メンバー登録</Link>
       </SLink>
       <hr />
       {members.map((member) => (

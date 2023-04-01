@@ -6,6 +6,8 @@ import Button from './Button';
 import Navigation from './Navigation';
 import styled from 'styled-components';
 
+const homeUrl = process.env.PUBLIC_URL;
+
 const SInput = styled.input`
   width: min-content(90%, 12em);
   margin-bottom: 1em;
@@ -38,7 +40,7 @@ const MemberRegistration = () => {
     // console.log(`name: ${name} gender${gender}`)
 
     addMember({ name, tickets: 0 });
-    navigate(`/`);
+    navigate(`${homeUrl}`);
   };
 
   //名前が有効かチェックし、有効な場合はtrueを返す。
@@ -56,7 +58,7 @@ const MemberRegistration = () => {
       <Navigation title="メンバー登録" />
       <hr />
       <SLink>
-        <Link to="/">一覧へ戻る</Link>
+        <Link to={`${homeUrl}`}>一覧へ戻る</Link>
       </SLink>
       <hr />
 

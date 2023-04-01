@@ -25,7 +25,7 @@ const Navigation = (props) => {
   return (
     <SContainer>
       <div>{props.title}</div>
-      <div>{session && <Button onClick={handleLogout}>LOGOUT</Button>}</div>
+      <div>{session && <Button onClick={handleLogout}>ログアウト</Button>}</div>
     </SContainer>
   );
 };
