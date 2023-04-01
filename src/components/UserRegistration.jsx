@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../services/supabase_api';
 import Navigation from './Navigation';
 import ColorMessage from './ColorMessage';
 import AuthForm from './AuthForm';
 
+const homeUrl = process.env.PUBLIC_URL;
+
 const UserRegistration = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -17,9 +21,8 @@ const UserRegistration = () => {
       email: email.trim(),
       password,
     });
-    setMessage(
-      '「木曜会アプリの管理者ユーザー登録確認」という件名のメールを送信しましたのでリンクをクリックしてください'
-    );
+    navigate(`${homeUrl}/auth`);
+
     if (error) {
       console.log(error.message);
       setMessage('アカウントを作成できません');
