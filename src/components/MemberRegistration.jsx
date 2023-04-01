@@ -35,11 +35,10 @@ const MemberRegistration = () => {
     setGender(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); //デフォルトの動作を抑制する
-    // console.log(`name: ${name} gender${gender}`)
 
-    addMember({ name, tickets: 0 });
+    await addMember({ name, tickets: 0 });
     navigate(`${homeUrl}`);
   };
 

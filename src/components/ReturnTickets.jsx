@@ -13,7 +13,6 @@ const SLink = styled.div`
 `;
 
 const ReturnTickets = () => {
-  // const member = member_db.get_members()
   const location = useLocation();
   const member = location.state;
   const navigate = useNavigate();
@@ -22,8 +21,8 @@ const ReturnTickets = () => {
     navigate(`${homeUrl}/member/${member.id}`);
   };
 
-  const reset = () => {
-    updateTickets({ id: member.id, tickets: 0 });
+  const reset = async () => {
+    await updateTickets({ id: member.id, tickets: 0 });
 
     const today = new Date(Date.now());
     const refund = (member.tickets - 2) * member.ticket_price;
