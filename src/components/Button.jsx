@@ -8,7 +8,7 @@ const SButton = styled.button`
     margin: 0.25em;
     font-size: 0.8em;
     font-weight: bold;
-    color: #3c096d;
+    color: #380a63;
 `;
 
 const Button = (props) => {
